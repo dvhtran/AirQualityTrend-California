@@ -1,7 +1,7 @@
-const CSV2 = "https://raw.githubusercontent.com/dvhtran/AirQualityTrend-California/main/data/PM2.csv";
+const CSV2 = 'static/data/PM2.csv'
 
 function plotFromCSV() {
-    Plotly.d3.csv(CSV2,function(err, rows) {
+    d3.csv(CSV2).then(function(rows) {
         console.log(rows);
         processData2(rows);
     });
@@ -271,7 +271,7 @@ function makePlotly2(dateX, bakersfield, bishop, elcentro, fresno, hanfordcorcor
     ];
 
     let layout = {
-        title: "PM2.5 Year Over Year",
+        title: "PM2.5 Levels Over Years[2000 to 2021]",
         yaxis: {
             title:{
                 text: "Pollutant Level"

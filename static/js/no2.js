@@ -1,7 +1,10 @@
-const CSV = "https://raw.githubusercontent.com/dvhtran/AirQualityTrend-California/main/data/data.csv";
+const CSV = 'static/data/NO2.csv'
 
     function plotFromCSV() {
-        Plotly.d3.csv(CSV,function(err, rows) {
+        d3.csv(CSV).then(function(rows) {
+            // for (let i = 0; i < rows.length; i++) {
+            //    console.log(rows)
+            // } 
             console.log(rows);
             processData(rows);
         });
@@ -239,7 +242,7 @@ const CSV = "https://raw.githubusercontent.com/dvhtran/AirQualityTrend-Californi
         ];
     
         let layout = {
-            title: "NO2 Year Over Year",
+            title: "NO2 Level Over Years[2000 to 2021]",
             yaxis: {
                 title:{
                     text: "Pollutant Level"
@@ -257,6 +260,7 @@ const CSV = "https://raw.githubusercontent.com/dvhtran/AirQualityTrend-Californi
         };
     
         Plotly.newPlot('plot1', traces, layout, config);
+        
     }
     
     plotFromCSV();
